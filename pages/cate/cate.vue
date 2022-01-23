@@ -1,5 +1,8 @@
 <template>
   <view>
+    <!-- 使用自定义的搜索组件 -->
+    <my-search @click="gotoSearch"></my-search>
+    
     <view class="scroll-view-container">
       <!-- 左侧的滚动视图区域 -->
       <scroll-view class="left-scroll-view" scroll-y :style="{height: wh + 'px'}" >
@@ -55,7 +58,7 @@
       // 获取当前系统的信息
       const sysInfo = uni.getSystemInfoSync()
       // 为 wh 窗口可用高度动态赋值
-      this.wh = sysInfo.windowHeight
+      this.wh = sysInfo.windowHeight - 50
       // 调用获取分类列表数据的方法
       this.getCateList()
       
@@ -71,7 +74,7 @@
           if (res.meta.status !== 200) return new showMsg('数据加载失败', 'none', 3000).showtoast()
           // 转存数据
           this.cateList = res.message
-          log(this.cateList)
+          // log(this.cateList)
           // 为二级分类赋值
           this.cateLevel2 = res.message[0].children
         },
@@ -88,8 +91,14 @@
         uni.navigateTo({
           url: '/subpkg/goods_list/goods_list?cid=' + item3.cat_id
         })
-      }
+      },
+      // 跳转到分包中的搜索页面
+     gotoSearch() {
+       uni.navigateTo({
+         url: '/subpkg/search/search'
+       })
      }
+    }
   }
 </script>
 
