@@ -82,7 +82,7 @@
         // 为数据赋值：通过展开运算符的形式，进行新旧数据的拼接
         this.goodsList = [...this.goodsList, ...res.message.goods]
         this.total = res.message.total
-        log(this.goodsList)
+        // log(this.goodsList)
       }
     }
   }

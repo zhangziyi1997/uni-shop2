@@ -80,7 +80,7 @@
           new showMsg('数据加中', 'none').showloading()
           // 请求失败
           if(res.meta.status !== 200) {
-            return new showMsg('数据加载失败', 'none', 3000).showtoast()
+            return new showMsg('数据加载失败', 'none', 1000).showtoast()
           }
           // 数据请求成功
           uni.hideLoading()
